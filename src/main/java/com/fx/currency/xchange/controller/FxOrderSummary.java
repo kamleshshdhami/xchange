@@ -5,13 +5,13 @@ import java.util.List;
 public class FxOrderSummary {
 	private long orderId;
 	private String orderStatus;
-	private List<CurrencyAllocationDetail> breakDownDetails;
+	private List<CurrencyAllocationDetail> currencyAllocationDetails;
 
-	public FxOrderSummary(long orderId, String orderStatus, List<CurrencyAllocationDetail> breakDownDetails) {
+	public FxOrderSummary(long orderId, String orderStatus, List<CurrencyAllocationDetail> currencyAllocationDetails) {
 		super();
 		this.orderId = orderId;
 		this.orderStatus = orderStatus;
-		this.breakDownDetails = breakDownDetails;
+		this.currencyAllocationDetails = currencyAllocationDetails;
 	}
 
 	public long getOrderId() {
@@ -30,12 +30,12 @@ public class FxOrderSummary {
 		this.orderStatus = orderStatus;
 	}
 
-	public List<CurrencyAllocationDetail> getBreakDownDetails() {
-		return breakDownDetails;
+	public List<CurrencyAllocationDetail> getCurrencyAllocationDetails() {
+		return currencyAllocationDetails;
 	}
 
-	public void setBreakDownDetails(List<CurrencyAllocationDetail> breakDownDetails) {
-		this.breakDownDetails = breakDownDetails;
+	public void setCurrencyAllocationDetails(List<CurrencyAllocationDetail> currencyAllocationDetails) {
+		this.currencyAllocationDetails = currencyAllocationDetails;
 	}
 
 }

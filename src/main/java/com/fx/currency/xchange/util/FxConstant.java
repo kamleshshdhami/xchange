@@ -1,6 +1,6 @@
 package com.fx.currency.xchange.util;
 
-public class FxConstant {
+public final class FxConstant {
 
 	public static final String PENDING = "PENDING";
 	public static final String PARTIALLY_MATCHED = "PARTIALLY_MATCHED";
@@ -8,4 +8,7 @@ public class FxConstant {
 	public static final String USD = "USD";
 	public static final String GBP = "GBP";
 
+	private FxConstant() {
+		
+	}
 }

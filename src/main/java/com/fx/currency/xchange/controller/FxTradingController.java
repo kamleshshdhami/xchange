@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.fx.currency.xchange.service.FxService;
 
@@ -25,7 +26,7 @@ public class FxTradingController {
 	private FxService fxService;
 
 	@GetMapping("/order/{orderId}")
-	public ResponseEntity<FxOrder> getOrderStatus(@PathVariable String orderId) {
+	public ResponseEntity<FxOrder> retrieveOrder(@PathVariable String orderId) {
 		return ResponseEntity.ok().body(fxService.retrieveOrderById(orderId));
 	}
 
@@ -35,12 +36,16 @@ public class FxTradingController {
 
 		String orderId = fxService.createfxOrder(fxOrder);
 		fxService.matchOrder();
-		return ResponseEntity.created(new URI("/fx/xchange/v1/order/" + orderId)).body(new FxOrder(orderId));
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(
+				"/{id}").buildAndExpand(orderId).toUri();
+		
+		
+		return ResponseEntity.created(location).body(new FxOrder(orderId));
 	}
 
 	@GetMapping("/order/summary")
-	public ResponseEntity<List<FxOrderSummary>> retrieveOrderSummary() {
-		return ResponseEntity.ok().body(fxService.retrieveOrderSummary());
+	public ResponseEntity<List<FxOrderSummary>> retrieveAllOrderSummary() {
+		return ResponseEntity.ok().body(fxService.retrieveAllOrderSummary());
 	}
 
 }

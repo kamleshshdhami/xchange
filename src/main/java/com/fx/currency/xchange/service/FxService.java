@@ -2,7 +2,6 @@ package com.fx.currency.xchange.service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,19 +16,19 @@ import com.fx.currency.xchange.controller.FxOrderSummary;
 import com.fx.currency.xchange.entity.FxOrderEntity;
 import com.fx.currency.xchange.entity.FxOrderMatchStatusEntity;
 import com.fx.currency.xchange.entity.FxOrderMatchStatusEntityPk;
-import com.fx.currency.xchange.repository.FxRepository;
+import com.fx.currency.xchange.repository.FxRepositoryImpl;
 import com.fx.currency.xchange.util.FxConstant;
 
 @Service
 public class FxService {
 
 	@Autowired
-	private FxRepository fxRepository;
+	private FxRepositoryImpl fxRepository;
 
 	@Autowired
 	private CurrencyConversionService currencyConversionService;
 
-	public List<FxOrderSummary> retrieveOrderSummary() {
+	public List<FxOrderSummary> retrieveAllOrderSummary() {
 		List<FxOrderEntity> fxOrderList = fxRepository.fetchAllRecords();
 
 		List<FxOrderSummary> fxOrderSummaryList = new ArrayList<>();
@@ -100,7 +99,6 @@ public class FxService {
 				currencyTypeUsd);
 
 		if (!CollectionUtils.isEmpty(notSettledRecordUsdList) && !CollectionUtils.isEmpty(notSettledRecordGbpList)) {
-			System.out.println("Settle Transation " + new Date());
 
 			List<FxOrderMatchStatusEntity> fxOrderMatchStatusEntityList = new ArrayList<>();
 

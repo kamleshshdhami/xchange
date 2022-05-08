@@ -11,6 +11,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+
+
 @Entity(name = "fxorder")
 @Table(name = "FX_ORDER")
 @NamedQueries({
@@ -42,52 +49,5 @@ public class FxOrderEntity {
 	@Column(name = "STATUS", nullable = true, length = 100)
 	private String status;
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public BigDecimal getAmount() {
-		return amount;
-	}
-
-	public void setAmount(BigDecimal amount) {
-		this.amount = amount;
-	}
-
-	public String getCurrency() {
-		return currency;
-	}
-
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public BigDecimal getUsdAmt() {
-		return usdAmt;
-	}
-
-	public void setUsdAmt(BigDecimal usdAmt) {
-		this.usdAmt = usdAmt;
-	}
-
-	public BigDecimal getMatchedUsdAmt() {
-		return matchedUsdAmt;
-	}
-
-	public void setMatchedUsdAmt(BigDecimal matchedUsdAmt) {
-		this.matchedUsdAmt = matchedUsdAmt;
-	}
 
 }
